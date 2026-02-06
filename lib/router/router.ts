@@ -1,17 +1,15 @@
-import { WidgetBase } from "../abstracts/widgetBase.js";
-
 type preciseCallback = () => any
 type parameterCallback = (address: string) => any
 
 export class Router {
     preciseRoutes: Map<string, preciseCallback>;
-    parameterRoutes: Map<string, parameterCallback>;
+    parameterRoutes: [string, parameterCallback][];
 
     constructor(preciseRoutes?: Map<string, preciseCallback>,
-        parameterRoutes?: Map<string, parameterCallback>
+        parameterRoutes?: [string, parameterCallback][]
     ) {
         if (preciseRoutes == undefined) preciseRoutes = new Map<string, preciseCallback>();
-        if (parameterRoutes == undefined) parameterRoutes = new Map<string, parameterCallback>();
+        if (parameterRoutes == undefined) parameterRoutes = [];
         this.preciseRoutes = preciseRoutes;
         this.parameterRoutes = parameterRoutes;
         window.addEventListener("hashchange", () => {
@@ -35,17 +33,11 @@ export class Router {
             }
         }
 
-        for (const k of this.parameterRoutes.keys()) {
-            if (hash.startsWith(k)) {
-                this.parameterRoutes.get(k)!(hash.slice(k.length));
+        for (const k of this.parameterRoutes) {
+            if (hash.startsWith(k[0])) {
+                k[1](hash.slice(k.length));
                 return;
             }
         }
     }
-}
-
-export function switchPage(mainWidget: WidgetBase) {
-    const element = mainWidget.element;
-    document.body.innerHTML = "";
-    document.body.appendChild(element);
 }

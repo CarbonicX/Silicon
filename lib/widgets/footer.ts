@@ -1,12 +1,12 @@
-import { WidgetBase } from "../abstracts/widgetBase.js";
+import { ComplexWidgetBase, WidgetBase } from "../abstracts/widgetBase.js";
 
-export class Footer extends WidgetBase {
+export class Footer extends ComplexWidgetBase {
     protected _element: HTMLElement;
     constructor(id: string | null, classes: string[], widget: WidgetBase) {
         super(id, classes);
 
         this._element = document.createElement("div");
-        this._element.appendChild(widget.element);
+        this.addChild(widget);
 
         this.setIdAndClasses();
         this.addClassForElement("silib-footer");

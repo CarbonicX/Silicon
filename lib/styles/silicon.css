@@ -21,6 +21,7 @@ div {
 
 .silib-hbox-stretch {
     justify-content: space-between;
+    width: 100%;
 }
 
 /* VBox */
@@ -37,6 +38,7 @@ div {
 .silib-vbox-stretch {
     justify-content: space-between;
     flex: 1;
+    height: 100%;
 }
 
 .silib-stretching {
@@ -73,7 +75,6 @@ nav {
     background-color: #BE8C64;
     color: white;
     padding: 0 5%;
-    height: 70px;
     display: flex;
     align-items: center;
     z-index: 1000;

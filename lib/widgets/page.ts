@@ -1,14 +1,14 @@
-import { WidgetBase } from "../abstracts/widgetBase.js";
+import { ComplexWidgetBase, WidgetBase } from "../abstracts/widgetBase.js";
 
 export interface IPageStyle {
     backgroundColor?: string,
     foregroundColor?: string,
-    maxHeight?: number,
-    maxWidth?: number, 
+    height?: number,
+    width?: number, 
     padding?: number
 }
 
-export class Page extends WidgetBase {
+export class Page extends ComplexWidgetBase {
     protected _element: HTMLElement;
     private _mode!: string;
     get mode(): string {
@@ -26,7 +26,7 @@ export class Page extends WidgetBase {
         super(id, classes);
 
         this._element = document.createElement("div");
-        this._element.appendChild(content.element);
+        this.addChild(content);
         this.mode = mode;
 
         this.setIdAndClasses();
@@ -44,11 +44,11 @@ export class Page extends WidgetBase {
         if (settings.foregroundColor != undefined)
             this._element.style.backgroundColor = settings.foregroundColor;
 
-        if (settings.maxHeight != undefined)
-            this._element.style.maxHeight = settings.maxHeight.toString() + "px";
+        if (settings.height != undefined)
+            this._element.style.height = settings.height.toString() + "px";
 
-        if (settings.maxWidth != undefined)
-            this._element.style.maxWidth = settings.maxWidth.toString() + "px";
+        if (settings.width != undefined)
+            this._element.style.width = settings.width.toString() + "px";
 
         if (settings.padding != undefined)
             this._element.style.padding = settings.padding.toString() + "px";

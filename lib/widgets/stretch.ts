@@ -9,7 +9,7 @@ export class Stretch extends WidgetBase {
     }
     set proportion(proportion: number) {
         this._proportion = proportion;
-        this._element.style = "flex-grow: " + proportion;
+        this._element.style.cssText = "flex-grow: " + proportion;
     }
 
     constructor(id: string | null, classes: string[], proportion: number) {

@@ -4,6 +4,9 @@ export class Text extends WidgetBase {
     protected _element: HTMLDivElement | HTMLAnchorElement;
 
     get text(): string {
+        if (this._element.textContent == null) {
+            return "";
+        }
         return this._element.textContent;
     }
     set text(text: string) {

@@ -9,7 +9,7 @@ export class Generator {
             let name = node.name;
             let parameters = "";
             if (node.parameters.length > 0) {
-                parameters = ", " + node.parameters.join(": any, ")
+                parameters = ", " + node.parameters.join(": any, ") + ": any";
             }
 
             let constructorCode = ""
@@ -35,8 +35,11 @@ ${constructorCode}
     }
 
     static generateCode(node: any): any {
-        if (node.type == "Literal" || node.type == "Code" || node.type == "Variable") {
+        if (node.type == "Literal" || node.type == "Code") {
             return node.value;
+        }
+        if (node.type == "Variable") {
+            return node.name;
         }
         if (node.type == "List") {
             let list = []
@@ -91,14 +94,13 @@ ${constructorCode}
         const modified: string[] = [];
         const lines: string[] = [];
         for (const l of indexLines) {
-            if (l.includes("as")) {
-                const tokens = l.split(" ");
-                for (let i = 0; i < tokens.length; i++) {
-                    if (tokens[i] == "as") {
-                        modified.push(tokens[i + 1]!);
-                    }
+            const tokens = l.split(" ");
+            for (let i = 0; i < tokens.length; i++) {
+                if (tokens[i] == "as") {
+                    modified.push(tokens[i + 1]!);
+                    lines.push(l);
+                    break;
                 }
-                lines.push(l);
             }
         }
 

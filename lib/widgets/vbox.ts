@@ -4,19 +4,32 @@ import { StretchContainer } from "../abstracts/stretchContainer.js";
 
 export class VBox extends StretchContainer {
     protected inherentClass: string | null = "silib-vbox";
+
     protected _stretch!: boolean;
     get stretch(): boolean {
         return this._stretch;
     }
     set stretch(stretch: boolean) {
-        this.updateStretchingMode(stretch);
         this._stretch = stretch;
+        this.updateStretchingMode();
     }
 
-    constructor(id: string | null, classes: string[], children: WidgetBase[], stretch: boolean = true) {
+    private _center!: boolean;
+    get center(): boolean {
+        return this._center;
+    }
+    set center(center: boolean) {
+        this._center = center;
+        this.updateStretchingMode();
+    }
+
+    constructor(id: string | null, classes: string[], children: WidgetBase[], 
+        stretch: boolean = true, center: boolean = false) {
         super(id, classes, children);
 
-        this.stretch = stretch;
+        this._stretch = stretch;
+        this._center = center;
+        this.updateStretchingMode();
 
         this.each((widget) => {
             if (widget.functions.includes("stretchable")) {
@@ -27,9 +40,8 @@ export class VBox extends StretchContainer {
         this.setIdAndClasses();
     }
 
-    protected updateStretchingMode(stretch: boolean): void {
-        if (this.stretch == stretch) return;
-        if (stretch) this.addClassForElement("silib-vbox-stretch");
+    protected updateStretchingMode(): void {
+        if (this.stretch) this.addClassForElement("silib-vbox-stretch");
         else this.removeClassForElement("silib-vbox-stretch");
 
         let hasHBox = false;
@@ -38,9 +50,9 @@ export class VBox extends StretchContainer {
                 hasHBox = true;
             }
         }
-        if (!hasHBox) {
+        if (!hasHBox && this.center) {
             this.addClassForElement("silib-vbox-center");
-        } else if (hasHBox) {
+        } else {
             this.removeClassForElement("silib-vbox-center");
         }
     }
