@@ -1,0 +1,6 @@
+widget Page() {
+    Text("Hello, World!"): x,
+    VBox({
+        Text("Hello"): x
+    })
+}

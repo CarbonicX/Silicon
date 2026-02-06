@@ -1,0 +1,87 @@
+@import "elements.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+/* HBox */
+
+.silib-hbox {
+    align-items: center;
+    gap: 20px;
+}
+
+.silib-hbox-stretch {
+    justify-content: space-between;
+}
+
+/* VBox */
+
+.silib-vbox {
+    flex-direction: column;
+    gap: 20px;
+}
+
+.silib-vbox-center {
+    align-items: center;
+}
+
+.silib-vbox-stretch {
+    justify-content: space-between;
+    flex: 1;
+}
+
+.silib-stretching {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.silib-card-parent {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.silib-card {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.silib-page {
+    margin: 0 auto;
+    min-height: 100vh;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #BE8C64;
+    color: white;
+    padding: 0 5%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.silib-footer {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}

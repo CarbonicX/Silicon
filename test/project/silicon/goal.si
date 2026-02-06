@@ -1,0 +1,5 @@
+widget MyPage() {
+    VBox({
+        text = Text("Hello")
+    })
+}

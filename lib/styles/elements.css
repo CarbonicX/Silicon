@@ -1,0 +1,62 @@
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    background-color: #BE8C64;
+    color: white;
+}
+  
+button:hover {
+    background-color: #D39D70;
+}
+  
+button:active {
+    background-color: #BE8C64;
+}
+  
+button:focus {
+    outline: 2px solid #BE8C64;
+    outline-offset: 2px;
+}
+  
+button:disabled {
+    background-color: #AAAAAA;
+    cursor: not-allowed;
+}
+
+.silib-inputbox {
+    width: 100%;
+    max-width: 300px;
+    padding: 2px 4px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 0 0 2px #BE8C64;
+}
+
+.silib-inputbox:focus {
+    outline: none;
+    border-color: #BE8C64;
+}
+
+.silib-inputbox:hover {
+    border-color: #D39D70;
+}
+
+.silib-inputbox.error {
+    box-shadow: 0 0 0 2px #ff000099;
+    border-color: #FF6B6B;
+}
+
+.silib-inputbox.success {
+    box-shadow: 0 0 0 2px #229922;
+    border-color: #66BB66;
+}
+
+.silib-inputbox:disabled {
+    background-color: #AAAAAA;
+    box-shadow: 0 0 0 2px #AAAAAA;
+    cursor: not-allowed;
+}

@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+/* HBox */
+
+.silib-hbox {
+    align-items: center;
+    gap: 20px;
+}
+
+.silib-hbox-stretch {
+    justify-content: space-between;
+}
+
+/* VBox */
+
+.silib-vbox {
+    flex-direction: column;
+    gap: 20px;
+}
+
+.silib-vbox-center {
+    align-items: center;
+}
+
+.silib-vbox-stretch {
+    justify-content: space-between;
+    flex: 1;
+}
+
+/*
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    height: 100%;
+}
+*/
+
+.silib-stretching {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 卡片式 body */
+/* 下面两条缺少颜色 */
+/* card 需要设置 padding */
+.silib-card-parent {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.silib-card {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 页面式 body */
+/* body 和 page 缺少颜色 */
+/* page 需要设置最大宽度 max-width 和 padding */
+.silib-page {
+    margin: 0 auto;
+    min-height: 100vh;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}

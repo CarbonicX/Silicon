@@ -1,0 +1,53 @@
+[
+  {
+    "type": "WidgetDeclaration",
+    "name": "Page",
+    "parameters": [],
+    "list": {
+      "type": "List",
+      "elements": [
+        {
+          "type": "WidgetUse",
+          "name": "Text",
+          "parameters": [
+            {
+              "type": "Literal",
+              "value": "\"Hello, World!\""
+            }
+          ],
+          "id": null,
+          "classes": [
+            "x"
+          ]
+        },
+        {
+          "type": "WidgetUse",
+          "name": "VBox",
+          "parameters": [
+            {
+              "type": "List",
+              "elements": [
+                {
+                  "type": "WidgetUse",
+                  "name": "Text",
+                  "parameters": [
+                    {
+                      "type": "Literal",
+                      "value": "\"Hello\""
+                    }
+                  ],
+                  "id": null,
+                  "classes": [
+                    "x"
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": null,
+          "classes": []
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>固定顶部导航栏</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            padding-top: 70px; /* 为固定导航栏留出空间 */
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 固定导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #5D4037; /* 棕色 */
+            color: white;
+            padding: 0 5%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        /* 导航栏品牌/logo */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        
+        .navbar-brand i {
+            font-size: 1.6rem;
+            color: #FFAB91;
+        }
+        
+        /* 导航链接容器 */
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            color: #EDE7F6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            color: #FFCC80;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 12px;
+            right: 12px;
+            height: 3px;
+            background-color: #FFCC80;
+            border-radius: 2px;
+        }
+        
+        /* 响应式菜单按钮 */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        /* 主要内容区域 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1 {
+            color: #5D4037;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            color: #795548;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #EFEBE9;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .placeholder-content {
+            height: 1200px; /* 为了演示滚动效果 */
+        }
+        
+        /* 页脚 */
+        .footer {
+            background-color: #5D4037;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <!-- 固定导航栏 -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">
+            <i class="fas fa-mountain"></i>
+            <span>棕色导航</span>
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="navbar-nav" id="navbarNav">
+            <li><a href="#" class="nav-link active"><i class="fas fa-home"></i> 首页</a></li>
+            <li><a href="#" class="nav-link"><i class="fas fa-info-circle"></i> 关于我们</a></li>
+            <li><a href="#" class="nav-link"><i class="fas fa-briefcase"></i> 服务</a></li>
+            <li><a href="#" class="nav-link"><i class="fas fa-images"></i> 作品集</a></li>
+            <li><a href="#" class="nav-link"><i class="fas fa-envelope"></i> 联系我们</a></li>
+        </ul>
+    </nav>
+    
+    <!-- 页面主要内容 -->
+    <div class="container">
+        <div class="content-section">
+            <h1>固定顶部导航栏演示</h1>
+            <p>这是一个始终保持在页面顶部、与页面同宽的棕色导航栏。向下滚动页面可以看到导航栏始终固定在顶部。</p>
+            
+            <h2>导航栏特点</h2>
+            <p>1. 使用 <strong>position: fixed</strong> 实现固定定位</p>
+            <p>2. 设置 <strong>width: 100%</strong> 确保与页面同宽</p>
+            <p>3. 棕色(#5D4037)背景与白色文字形成良好对比</p>
+            <p>4. 添加了阴影效果增强视觉层次</p>
+            <p>5. 完全响应式设计，适配各种屏幕尺寸</p>
+            <p>6. 移动设备上提供汉堡菜单</p>
+            
+            <h2>页面内容</h2>
+            <p>下面的空白区域是为了演示导航栏在滚动时始终保持在顶部。请向下滚动查看效果。</p>
+            
+            <div class="placeholder-content">
+                <p style="margin-top: 50px;">继续向下滚动...</p>
+                <p style="margin-top: 200px;">还在滚动吗？导航栏是否一直保持在顶部？</p>
+                <p style="margin-top: 300px;">再向下滚动一点...</p>
+                <p style="margin-top: 400px;">快到底部了，导航栏仍然在顶部！</p>
+                <p style="margin-top: 500px;">这就是固定顶部导航栏的效果。</p>
+            </div>
+            
+            <h2>技术实现</h2>
+            <p>此导航栏使用纯HTML和CSS实现，无需JavaScript即可工作（移动端菜单切换需要少量JS）。</p>
+            <p>导航栏采用了flexbox布局，确保元素在不同屏幕尺寸下都能正确排列。</p>
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>© 2023 固定导航栏演示 | 始终保持在页面顶部的棕色导航栏</p>
+    </div>
+    
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menuToggle');
+        const navbarNav = document.getElementById('navbarNav');
+        
+        menuToggle.addEventListener('click', () => {
+            navbarNav.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navbarNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // 点击导航链接后关闭移动端菜单
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navbarNav.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+                
+                // 更新活动链接
+                navLinks.forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+        
+        // 窗口调整大小时重置菜单状态
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navbarNav.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
