@@ -1,11 +1,11 @@
 import { WidgetBase } from "../abstracts/widgetBase.js";
 
 export interface IPageStyle {
-    backgroundColor: string | undefined,
-    foregroundColor: string | undefined,
-    maxHeight: number | undefined,
-    maxWidth: number | undefined, 
-    padding: number | undefined
+    backgroundColor?: string,
+    foregroundColor?: string,
+    maxHeight?: number,
+    maxWidth?: number, 
+    padding?: number
 }
 
 export class Page extends WidgetBase {
