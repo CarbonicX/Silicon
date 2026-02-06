@@ -6,7 +6,6 @@ export default defineConfig({
     format: ["cjs"],
     bundle: true,
     splitting: false,
-    clean: true,
     minify: true,
     outDir: "release/compiler",
     noExternal: ["chevrotain"]

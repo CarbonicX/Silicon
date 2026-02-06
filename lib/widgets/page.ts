@@ -33,11 +33,13 @@ export class Page extends WidgetBase {
     }
 
     // 需要在创建 Page 后调用
-    style(parent: WidgetBase, settings: IPageStyle) {
-        const parentElement = parent.element;
+    style(parent: HTMLElement | WidgetBase, settings: IPageStyle) {
+        if (parent instanceof WidgetBase) {
+            parent = parent.element;
+        }
 
         if (settings.backgroundColor != undefined)
-            parentElement.style.backgroundColor = settings.backgroundColor;
+            parent.style.backgroundColor = settings.backgroundColor;
 
         if (settings.foregroundColor != undefined)
             this._element.style.backgroundColor = settings.foregroundColor;
@@ -52,9 +54,9 @@ export class Page extends WidgetBase {
             this._element.style.padding = settings.padding.toString() + "px";
 
         if (this.mode == "card") {
-            parentElement.classList.add("silib-card-parent");
+            parent.classList.add("silib-card-parent");
         } else if (this.mode == "page") {
-            parentElement.classList.remove("silib-card-parent");
+            parent.classList.remove("silib-card-parent");
         }
     }
 }

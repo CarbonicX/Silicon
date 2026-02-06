@@ -86,6 +86,22 @@ ${constructorCode}
     }
 
     static generateIndexTemplate(rootdir: string, libdir: string) {
+        const indexFilePath = path.join(rootdir, "silicon.index.ts");
+        const indexLines: string[] = fs.readFileSync(indexFilePath, "utf-8").split("\n");
+        const modified: string[] = [];
+        const lines: string[] = [];
+        for (const l of indexLines) {
+            if (l.includes("as")) {
+                const tokens = l.split(" ");
+                for (let i = 0; i < tokens.length; i++) {
+                    if (tokens[i] == "as") {
+                        modified.push(tokens[i + 1]!);
+                    }
+                }
+                lines.push(l);
+            }
+        }
+
         let code = "";
         const files: string[] = getAllFiles(libdir);
         for (const f of files) {
@@ -99,8 +115,13 @@ ${constructorCode}
 
         code += "\n";
         for (const k of this.declaration.keys()) {
+            if (modified.includes(k)) continue;
             code += `export { ${k} } from "./generated/${k.toLowerCase()}.js";\n`;
         }
+
+        code += "\n";
+        code += lines.join("\n");
+        code += "\n";
 
         fs.writeFileSync(path.join(rootdir, "silicon.index.ts"), code);
     }
